@@ -10,9 +10,15 @@ function App() {
           </form>
         </div>
 
-        <div>
-          <h1 id='nome-cidade'></h1>
-          
+        <div id='clima-atual'>
+          <div>
+            <h1 id='nome-cidade'>Fortaleza, CE</h1>
+            <h2 id='data-atual' className='info-estilo'>Segunda-feira, 27 de Maio</h2>
+          </div>
+          <div id='temperatura-atual'>
+            <img src='/src/assets/icons/clouds_sun_sunny_weather.svg' alt='icone do clima atual' />
+            <p id='temperatura'>27°C</p>
+          </div>
         </div>
 
       </main>

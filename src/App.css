@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 body {
   background-color: #191C2A;
   color: white;
@@ -9,6 +13,43 @@ main {
   display: flex;
   flex-direction: column;
   background-color: #141622;
-  width: 80%;
+  min-width: 600px;
   height: 80%;
+  padding: 20px;
+  border-radius: 20px;
+  border: #7C83A3 solid 1px;
+}
+
+h1 {
+  font-size: larger;
+}
+
+h2 {
+  font-size: smaller;
+}
+
+#clima-atual {
+  display: flex;
+  justify-content: space-between;
+}
+
+#clima-atual img {
+  width: 100px;
+}
+
+.info-estilo {
+  color: #7C83A3;
+}
+
+#temperatura-atual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#temperatura {
+  margin: 0;
+  font-weight: bold;
+  font-size: 40px;
+  color: #8DB6F4;
 }
