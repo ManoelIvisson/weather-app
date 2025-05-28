@@ -18,6 +18,29 @@ main {
   padding: 20px;
   border-radius: 20px;
   border: #7C83A3 solid 1px;
+  align-items: center;
+}
+
+#pesquisa {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+#cidade {
+  padding: 10px;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  width: 300px;
+}
+
+#icone-busca {
+  display: flex;
+  background-color: white;
+  height: 35px;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 5px 0px 0px 5px;
 }
 
 h1 {
@@ -30,6 +53,7 @@ h2 {
 
 #clima-atual {
   display: flex;
+  width: 100%;
   justify-content: space-between;
 }
 

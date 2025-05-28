@@ -1,3 +1,4 @@
+import { IoIosSearch } from 'react-icons/io'
 import './App.css'
 
 function App() {
@@ -5,6 +6,9 @@ function App() {
     <>
       <main>
         <div id='pesquisa'>
+          <p id='icone-busca'>
+            <IoIosSearch className='info-estilo' />
+          </p>
           <form action="">
             <input type="text" name="cidade" id="cidade" placeholder='Digite o nome da cidade... ' />
           </form>
@@ -21,6 +25,20 @@ function App() {
           </div>
         </div>
 
+        <div id='info-clima'>
+          <div>
+            <p>Sensação: </p>
+          </div>
+          <div>
+            <p>Umidade: </p>
+          </div>
+          <div>
+            <p>Vento: </p>
+          </div>
+          <div>
+            <p>Pressão: </p>
+          </div>
+        </div>
       </main>
     </>
   )
