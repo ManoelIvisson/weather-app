@@ -1,9 +1,46 @@
 import { IoIosSearch, IoIosWater, IoIosSpeedometer } from 'react-icons/io'
 import { CiTempHigh } from 'react-icons/ci'
 import { RiWindyLine } from 'react-icons/ri'
+import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [cidade, setCidade] = useState<string>();
+  const [dadosClima, setDadosClima] = useState<DadosClima | any>();
+  const [cidadePesquisada, setCidadePesquisada] = useState<boolean>();
+
+  type DadosClima = {
+    name: string;
+    weather: {
+      main: string;
+    };
+    main: {
+      temp: number;
+      humidity: number;
+      pressure: number;
+    };
+    wind_speed: number;
+  }
+
+  async function pesquisarClima(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const dadosClima = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cidade}&unit=metric&appid=68aa71aa4032bc13f58232f35768d2c7&units=metric`)
+    .then(res => res.json())
+    console.log(dadosClima);
+    setDadosClima({
+      name: dadosClima.name,
+      main: {
+        temp: dadosClima.main.temp,
+        sensation: dadosClima.main.feels_like,
+        humidity: dadosClima.main.humidity,
+        pressure: dadosClima.main.pressure
+      },
+      wind_speed: dadosClima.wind.speed
+    });
+    setCidadePesquisada(true);
+  }
+
   return (
     <>
       <main>
@@ -11,38 +48,42 @@ function App() {
           <p id='icone-busca'>
             <IoIosSearch className='info-estilo' />
           </p>
-          <form action="">
-            <input type="text" name="cidade" id="cidade" placeholder='Digite o nome da cidade... ' />
+          <form onSubmit={pesquisarClima}>
+            <input type="text" name="cidade" id="cidade" placeholder='Digite o nome da cidade... ' onChange={(cidade) => setCidade(cidade.target.value)} />
           </form>
         </div>
 
-        <div id='clima-atual'>
-          <div>
-            <h1 id='nome-cidade'>Fortaleza, CE</h1>
-            <h2 id='data-atual' className='info-estilo'>Segunda-feira, 27 de Maio</h2>
-          </div>
+        {!cidadePesquisada ? 
+          <p>Pesquise o clima de uma cidade</p>
+        : 
+        <>
+          <div id='clima-atual'>
+            <div>
+              <h1 id='nome-cidade'>{dadosClima?.name}</h1>
+              <h2 id='data-atual' className='info-estilo'>Segunda-feira, 27 de Maio</h2>
+            </div>
           <div id='temperatura-atual'>
             <img src='/src/assets/icons/clouds_sun_sunny_weather.svg' alt='icone do clima atual' />
-            <p id='temperatura'>27°C</p>
+            <p id='temperatura'>{dadosClima?.main.temp}°C</p>
           </div>
         </div>
 
         <div id='info-clima'>
           <div>
             <CiTempHigh className='info-estilo' />
-            <p>Sensação: </p>
+            <p>Sensação: {dadosClima?.main.sensation}°C</p>
           </div>
           <div>
             <IoIosWater className='info-estilo' />
-            <p>Umidade: </p>
+            <p>Umidade: {dadosClima?.main.humidity}%</p>
           </div>
           <div>
             <RiWindyLine className='info-estilo' />
-            <p>Vento: </p>
+            <p>Vento: {dadosClima?.wind_speed} km/h</p>
           </div>
           <div>
             <IoIosSpeedometer className='info-estilo' />
-            <p>Pressão: </p>
+            <p>Pressão: {dadosClima?.main.pressure} hPa</p>
           </div>
         </div>
 
@@ -55,9 +96,11 @@ function App() {
             <div></div>
           </div>
           <div id="info-sol">
-            
+
           </div>
         </div>
+        </>
+        }
       </main>
     </>
   )
