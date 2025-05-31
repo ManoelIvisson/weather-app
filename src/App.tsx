@@ -1,4 +1,6 @@
-import { IoIosSearch } from 'react-icons/io'
+import { IoIosSearch, IoIosWater, IoIosSpeedometer } from 'react-icons/io'
+import { CiTempHigh } from 'react-icons/ci'
+import { RiWindyLine } from 'react-icons/ri'
 import './App.css'
 
 function App() {
@@ -27,16 +29,33 @@ function App() {
 
         <div id='info-clima'>
           <div>
+            <CiTempHigh className='info-estilo' />
             <p>Sensação: </p>
           </div>
           <div>
+            <IoIosWater className='info-estilo' />
             <p>Umidade: </p>
           </div>
           <div>
+            <RiWindyLine className='info-estilo' />
             <p>Vento: </p>
           </div>
           <div>
+            <IoIosSpeedometer className='info-estilo' />
             <p>Pressão: </p>
+          </div>
+        </div>
+
+        <div id="clima-proximos-dias">
+          <p>Previsão para os próximos dias</p>
+          <div id='proximos-dias'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+          <div id="info-sol">
+            
           </div>
         </div>
       </main>

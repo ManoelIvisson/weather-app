@@ -13,7 +13,7 @@ main {
   display: flex;
   flex-direction: column;
   background-color: #141622;
-  min-width: 600px;
+  max-width: 600px;
   height: 80%;
   padding: 20px;
   border-radius: 20px;
@@ -44,7 +44,7 @@ main {
 }
 
 h1 {
-  font-size: larger;
+  font-size: 40px;
 }
 
 h2 {
@@ -76,4 +76,21 @@ h2 {
   font-weight: bold;
   font-size: 40px;
   color: #8DB6F4;
+}
+
+#info-clima {
+  display: grid;
+  grid: repeat(2, 50px) / 20fr 20fr;
+  gap: 20px;
+  align-items: center;
+}
+
+#info-clima div {
+  background-color: #171926;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 10px;
+   border: #7C83A3 solid 1px;
 }
