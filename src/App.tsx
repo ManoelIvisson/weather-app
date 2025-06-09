@@ -8,6 +8,7 @@ function App() {
   const [cidade, setCidade] = useState<string>();
   const [dadosClima, setDadosClima] = useState<DadosClima | any>();
   const [cidadePesquisada, setCidadePesquisada] = useState<boolean>();
+  const [iconeClima, setIconeClima] = useState<string>();
 
   type DadosClima = {
     name: string;
@@ -39,6 +40,44 @@ function App() {
       wind_speed: dadosClima.wind.speed
     });
     setCidadePesquisada(true);
+    selecionarIconeClima(dadosClima.weather[0].description)
+  }
+
+  function selecionarIconeClima(descricaoClima: string) {
+    alert(descricaoClima)
+    switch(descricaoClima) {
+      case 'overcast clouds': {
+        setIconeClima("/src/assets/icons/overcast_clouds.svg");
+        break;
+      }
+      case 'clear sky': {
+        setIconeClima("/src/assets/icons/clear_sky.svg");
+        break;
+      }
+      case 'haze': {
+        setIconeClima("/src/assets/icons/haze.svg");
+        break;
+      }
+      case 'mist': {
+        setIconeClima("/src/assets/icons/mist.svg");
+        break;
+      }
+      case 'broken clouds': {
+        setIconeClima("/src/assets/icons/overcast_clouds.svg");
+        break;
+      }
+      case 'light rain': {
+        setIconeClima("/src/assets/icons/light_rain.svg");
+        break;
+      }
+      case 'scattered clouds': {
+        setIconeClima("/src/assets/icons/overcast_clouds.svg");
+        break;
+      }
+      default: {
+
+      }
+    }
   }
 
   return (
@@ -63,7 +102,7 @@ function App() {
               <h2 id='data-atual' className='info-estilo'>Segunda-feira, 27 de Maio</h2>
             </div>
           <div id='temperatura-atual'>
-            <img src='/src/assets/icons/clouds_sun_sunny_weather.svg' alt='icone do clima atual' />
+            <img src={iconeClima} alt='icone do clima atual' />
             <p id='temperatura'>{dadosClima?.main.temp}°C</p>
           </div>
         </div>
