@@ -48,31 +48,31 @@ function App() {
     alert(descricaoClima)
     switch(descricaoClima) {
       case 'overcast clouds': {
-        setIconeClima("/src/assets/icons/overcast_clouds.svg");
+        setIconeClima("src/assets/icons/overcast_clouds.svg");
         break;
       }
       case 'clear sky': {
-        setIconeClima("/src/assets/icons/clear_sky.svg");
+        setIconeClima("src/assets/icons/clear_sky.svg");
         break;
       }
       case 'haze': {
-        setIconeClima("/src/assets/icons/haze.svg");
+        setIconeClima("src/assets/icons/haze.svg");
         break;
       }
       case 'mist': {
-        setIconeClima("/src/assets/icons/mist.svg");
+        setIconeClima("src/assets/icons/mist.svg");
         break;
       }
       case 'broken clouds': {
-        setIconeClima("/src/assets/icons/overcast_clouds.svg");
+        setIconeClima("src/assets/icons/overcast_clouds.svg");
         break;
       }
       case 'light rain': {
-        setIconeClima("/src/assets/icons/light_rain.svg");
+        setIconeClima("src/assets/icons/light_rain.svg");
         break;
       }
       case 'scattered clouds': {
-        setIconeClima("/src/assets/icons/overcast_clouds.svg");
+        setIconeClima("src/assets/icons/overcast_clouds.svg");
         break;
       }
       default: {
