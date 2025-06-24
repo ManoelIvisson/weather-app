@@ -2,6 +2,7 @@ import { IoIosSearch, IoIosWater, IoIosSpeedometer } from 'react-icons/io'
 import { CiTempHigh } from 'react-icons/ci'
 import { RiWindyLine } from 'react-icons/ri'
 import { useState } from 'react'
+import { formatarDataAtual } from './utils/dataFormatada.ts'
 import './App.css'
 
 function App() {
@@ -99,30 +100,30 @@ function App() {
           <div id='clima-atual'>
             <div>
               <h1 id='nome-cidade'>{dadosClima?.name}</h1>
-              <h2 id='data-atual' className='info-estilo'>Segunda-feira, 27 de Maio</h2>
+              <h2 id='data-atual' className='info-estilo'>{formatarDataAtual()}</h2>
             </div>
           <div id='temperatura-atual'>
             <img src={iconeClima} alt='icone do clima atual' />
-            <p id='temperatura'>{dadosClima?.main.temp}°C</p>
+            <p id='temperatura'>{Math.round(dadosClima?.main.temp)}°C</p>
           </div>
         </div>
 
         <div id='info-clima'>
           <div>
             <CiTempHigh className='info-estilo' />
-            <p>Sensação: {dadosClima?.main.sensation}°C</p>
+            <p>Sensação: <span className='info-estilo'>{dadosClima?.main.sensation}°C</span></p>
           </div>
           <div>
             <IoIosWater className='info-estilo' />
-            <p>Umidade: {dadosClima?.main.humidity}%</p>
+            <p>Umidade: <span className='info-estilo'>{dadosClima?.main.humidity}%</span></p>
           </div>
           <div>
             <RiWindyLine className='info-estilo' />
-            <p>Vento: {dadosClima?.wind_speed} km/h</p>
+            <p>Vento: <span className='info-estilo'>{dadosClima?.wind_speed} km/h</span></p>
           </div>
           <div>
             <IoIosSpeedometer className='info-estilo' />
-            <p>Pressão: {dadosClima?.main.pressure} hPa</p>
+            <p>Pressão: <span className='info-estilo'>{dadosClima?.main.pressure} hPa</span></p>
           </div>
         </div>
 
@@ -141,6 +142,8 @@ function App() {
         </>
         }
       </main>
+      <footer>
+      </footer>
     </>
   )
 }
