@@ -1,9 +1,9 @@
-name: Build and Deploy to GitHub Pages
+name: Build and Deploy React to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,11 +12,12 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +25,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20  # ou a versão que você usa
+          node-version: 20 # ou a versão que você usa
 
       - name: Install dependencies
         run: npm install
